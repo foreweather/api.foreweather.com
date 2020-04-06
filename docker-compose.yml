@@ -5,11 +5,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: 127.0.0.1:5000/api
+    image: zekiunal/foreweather-api
     ports:
       - "8888:80"
       - "4422:22"
     links:
       - mysql
+    environment:
+      DB_ADAPTER: 'mysql'
+      DB_HOST: 'mysql'
+      DB_PORT: '3306'
+      DB_USERNAME: 'root'
+      DB_PASSWORD: 'Fore@123'
+      DB_NAME: 'foreweather'
   mysql:
-    image: mysql:latest
+    image: mysql:5.6
+    ports:
+      - "3333:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'foreweather'
+      MYSQL_ROOT_PASSWORD: 'Fore@123'
