@@ -13,4 +13,3 @@ $providers = require_once '../application/config/providers.php';
 $api = new Api();
 $api->setup($providers);
 $api->run();
-
