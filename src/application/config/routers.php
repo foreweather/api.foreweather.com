@@ -37,4 +37,3 @@ return [
         [OAuthController::class, 'token', 'post', '/token', true],
     ],
 ];
-
