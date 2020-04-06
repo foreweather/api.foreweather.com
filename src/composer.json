@@ -20,7 +20,8 @@
   "require": {
     "php": ">=7.2",
     "ext-openssl": "*",
-    "ext-phalcon": "~4.0.5"
+    "ext-phalcon": "~4.0.5",
+    "bshaffer/oauth2-server-php": "1.9.*"
   },
   "require-dev": {
     "phalcon/ide-stubs": "4.0.4",
