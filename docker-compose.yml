@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 127.0.0.1:5000/api
+    ports:
+      - "8888:80"
+      - "4422:22"
+    links:
+      - mysql
+  mysql:
+    image: mysql:latest

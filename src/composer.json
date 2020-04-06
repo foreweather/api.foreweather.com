@@ -1,0 +1,29 @@
+{
+  "name": "foreweather/restful",
+  "type": "library",
+  "description": "This is a api restful service",
+  "keywords": [
+    "phalcon",
+    "micro framework",
+    "restful",
+    "api",
+    "foreweather"
+  ],
+  "homepage": "https://foreweather.test",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zeki Unal",
+      "email": "zekiunal@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "ext-openssl": "*",
+    "ext-phalcon": "~4.0.5"
+  },
+  "require-dev": {
+    "phalcon/ide-stubs": "4.0.4",
+    "friendsofphp/php-cs-fixer": "2.16.1"
+  }
+}
