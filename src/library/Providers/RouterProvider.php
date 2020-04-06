@@ -95,6 +95,7 @@ class RouterProvider implements ServiceProviderInterface
      */
     private function getRoutes(): array
     {
-        return include_once '../application/config/routers.php';
+        $routes = (include '../application/config/routers.php');
+        return $routes;
     }
 }

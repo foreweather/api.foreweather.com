@@ -33,6 +33,9 @@ class OAuthMiddleware implements MiddlewareInterface
          */
         $response = $api->getService('response');
 
+        /**
+         * Check request is protected?
+         */
         if (true !== $request->isPublic($api->getRouter()->getMatchedRoute())) {
 
             /**

@@ -18,7 +18,7 @@ class RequestProvider implements ServiceProviderInterface
 
         foreach ($routes as $prefix => $group) {
             foreach ($group as $route) {
-                if (isset($route[4])) {
+                if (isset($route[4]) && $route['4'] === true) {
                     $route[2] = strtoupper($route[2]);
                     $route[5] = $prefix.$route[3];
                     $public_resources[] = $route;
@@ -36,6 +36,7 @@ class RequestProvider implements ServiceProviderInterface
      */
     private function getRoutes(): array
     {
-        return include '../application/config/routers.php';
+        $routes = include '../application/config/routers.php';
+        return $routes;
     }
 }
