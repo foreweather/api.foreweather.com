@@ -4,6 +4,7 @@ use Phalcon\Loader;
 
 include_once '../application/config/env.php';
 include_once '../vendor/autoload.php';
+include_once 'functions.php';
 
 $loader = new Loader();
 $loader->registerNamespaces(
