@@ -17,11 +17,10 @@ class ConfigProvider implements ServiceProviderInterface
      *
      * @return void
      */
-
     public function register(DiInterface $di): void
     {
         $di->setShared('config', function () {
-            $config = include '../../application/config/config.php';
+            $config = include '../application/config/config.php';
 
             return new Config($config);
         });
