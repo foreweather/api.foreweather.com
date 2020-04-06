@@ -3,3 +3,4 @@ vendor
 composer.phar
 composer.lock
 stack.md
+php-cs-fixer
