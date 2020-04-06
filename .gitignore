@@ -6,3 +6,5 @@ stack.md
 php-cs-fixer
 phpcbf.phar
 phpcs.phar
+PHP_CodeSniffer
+.php_cs.cache
