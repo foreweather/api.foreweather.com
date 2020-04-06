@@ -19,8 +19,7 @@ Docker swarm ile ölçeklenebilir bir altyapı kullanabilirsiniz.
 ```bash
 $  docker swarm init
 
-$  docker-compose push
+$  docker-compose build api && docker-compose push
 
 $  docker stack deploy --compose-file docker-compose.yml foreweather
 ```
-

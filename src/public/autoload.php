@@ -2,6 +2,7 @@
 
 use Phalcon\Loader;
 
+include_once '../application/config/env.php';
 include_once '../vendor/autoload.php';
 
 $loader = new Loader();
