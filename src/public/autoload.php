@@ -8,6 +8,7 @@ $loader = new Loader();
 $loader->registerNamespaces(
     [
         'Providers'   => '../library/Providers',
+        'Foreweather' => '../library/Foreweather'
     ]
 );
 $loader->register();
