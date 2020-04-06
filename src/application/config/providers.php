@@ -5,6 +5,7 @@ use Providers\DatabaseProvider;
 use Providers\RequestProvider;
 use Providers\ResponseProvider;
 use Providers\RouterProvider;
+use Providers\OAuthProvider;
 
 /**
  * Provider class names
@@ -14,5 +15,6 @@ return [
     RouterProvider::class,
     RequestProvider::class,
     ResponseProvider::class,
-    DatabaseProvider::class
+    DatabaseProvider::class,
+    OAuthProvider::class
 ];
