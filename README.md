@@ -14,7 +14,7 @@ Foreweather'un geliştirme sürümünü başlatmanın hızlı bir yolu github re
 
 ### Docker Swarm 
 
-Docker swarm ile ölçeklenebilir bir altyapı kullabilirsiniz.
+Docker swarm ile ölçeklenebilir bir altyapı kullanabilirsiniz.
 
 ```bash
 $  docker swarm init
