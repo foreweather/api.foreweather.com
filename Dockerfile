@@ -60,3 +60,22 @@ RUN sed -i "s/#PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
 RUN ssh-keygen -A
 RUN echo 'root:Fore@123' | chpasswd
 EXPOSE 22
+
+
+        'adapter'  => getenv('DB_ADAPTER'),
+        'host'     => getenv('DB_HOST'),
+        'port'     => getenv('DB_PORT'),
+        'username' => getenv('DB_USERNAME'),
+        'password' => getenv('DB_PASSWORD'),
+        'dbname'   => getenv('DB_NAME'),
+
+#######################################################################################################################
+# Default ENVS
+#######################################################################################################################
+ENV DB_ADAPTER          "mysql"
+ENV DB_HOST             "api"
+ENV DB_PORT             "3306"
+ENV DB_USERNAME         "root"
+ENV DB_NAME             "foreweather"
+
+
