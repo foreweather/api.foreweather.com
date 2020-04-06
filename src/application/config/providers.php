@@ -12,9 +12,10 @@ use Providers\OAuthProvider;
  */
 return [
     ConfigProvider::class,
+    DatabaseProvider::class,
+    OAuthProvider::class,
     RouterProvider::class,
     RequestProvider::class,
     ResponseProvider::class,
-    DatabaseProvider::class,
-    OAuthProvider::class
+
 ];
