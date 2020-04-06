@@ -8,11 +8,6 @@ use Phalcon\Mvc\Micro;
 class Api extends AbstractBootstrapApp implements BootstrapAppInterface
 {
     /**
-     * @var Micro
-     */
-    protected $application;
-
-    /**
      * Setup the application
      *
      * @param array $providers
@@ -20,10 +15,10 @@ class Api extends AbstractBootstrapApp implements BootstrapAppInterface
     public function setup(array $providers = []): void
     {
         $this->di = new FactoryDefault();
-
         parent::setup($providers);
 
         $this->setupApplication();
+
         $this->registerServices();
     }
 
@@ -36,13 +31,5 @@ class Api extends AbstractBootstrapApp implements BootstrapAppInterface
     {
         $this->application = new Micro($this->di);
         $this->di->setShared('application', $this->application);
-    }
-
-    /**
-     * Run the application
-     */
-    public function run(): void
-    {
-        $this->application->handle($_SERVER['REQUEST_URI']);
     }
 }

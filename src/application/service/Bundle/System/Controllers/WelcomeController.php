@@ -28,7 +28,7 @@ class WelcomeController extends Controller
         $this->response->success(
             [
                 'message' => 'v1.0.0',
-                'detail' => 'Test for public resource'
+                'detail' => 'Test for protected resource'
             ]
         );
     }

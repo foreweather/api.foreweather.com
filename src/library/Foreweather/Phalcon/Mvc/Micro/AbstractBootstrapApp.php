@@ -5,9 +5,14 @@ namespace Foreweather\Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\FactoryDefault\Cli;
 use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\Mvc\Micro;
 
 abstract class AbstractBootstrapApp implements BootstrapAppInterface
 {
+    /**
+     * @var Micro|Cli
+     */
+    protected $application;
     /**
      * @var array
      */
@@ -17,11 +22,6 @@ abstract class AbstractBootstrapApp implements BootstrapAppInterface
      * @var FactoryDefault|Cli
      */
     protected $di;
-
-    /**
-     * Run the application
-     */
-    abstract public function run(): void;
 
     /**
      * @param array $providers
@@ -46,5 +46,13 @@ abstract class AbstractBootstrapApp implements BootstrapAppInterface
             $object = (new $provider());
             $object->register($this->di);
         }
+    }
+
+    /**
+     * Run the application
+     */
+    public function run(): void
+    {
+        $this->application->handle($_SERVER['REQUEST_URI']);
     }
 }
