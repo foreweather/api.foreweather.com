@@ -27,7 +27,7 @@ docker stack deploy --compose-file docker-compose.yml foreweather
 
 # Kullanım
 
-Postman import dosyasını proje anadizininde bulabilirsiniz. 
+Postman import dosyasını proje ana dizininde bulabilirsiniz. 
 
-[Postman Import File](ForeweatherProject.postman_collection.json)
+[Postman Import File](https://raw.githubusercontent.com/foreweather/api.foreweather.com/master/ForeweatherProject.postman_collection.json)
 
