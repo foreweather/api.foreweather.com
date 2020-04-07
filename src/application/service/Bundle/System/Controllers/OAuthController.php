@@ -15,25 +15,7 @@ use Phalcon\Mvc\Controller;
 class OAuthController extends Controller
 {
     /**
-     *
      * @return Response
-     *
-     * @api      {post} /oauth2/token Request access token
-     * @apiName  token
-     * @apiGroup OAuth
-     *
-     * @apiParam {username} username.
-     * @apiParam {password} password.
-     * @apiParam {grant_type} New authorization grant types can be defined by assigning them a
-     *                        unique absolute URI for use with the "grant_type" parameter..
-     * @apiParam {client_id} client id .
-     * @apiParam {client_secret} client secret
-     *
-     * @apiSuccess {String} access_token
-     * @apiSuccess {String} expires_in
-     * @apiSuccess {String} token_type
-     * @apiSuccess {String} scope
-     * @apiSuccess {String} refresh_token
      */
     public function token()
     {

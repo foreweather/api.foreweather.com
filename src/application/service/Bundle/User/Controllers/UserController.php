@@ -23,6 +23,23 @@ class UserController extends Controller
     protected $exclude = ['password'];
 
     /**
+     * @api      {post} /user/token Request access token
+     * @apiName  token
+     * @apiGroup OAuth
+     * @apiParam {username} username.
+     * @apiParam {password} password.
+     * @apiParam {grant_type}   New authorization grant types can be defined by assigning them a unique absolute URI for
+     *                          use with the "grant_type" parameter..
+     * @apiParam {client_id} client id .
+     * @apiParam {client_secret} client secret
+     *
+     * @apiSuccess {String} access_token
+     * @apiSuccess {String} expires_in
+     * @apiSuccess {String} token_type
+     * @apiSuccess {String} scope
+     * @apiSuccess {String} refresh_token
+     */
+    /**
      * @param $id
      *
      * @return Response
@@ -95,9 +112,7 @@ class UserController extends Controller
             }
 
             if (empty($data->getMessages())) {
-                return $this->response->success(
-                    $data->toSafeArray(['password', 'photo_base64'])
-                );
+                return $this->response->successNoContent();
             } else {
                 return $this->response->badRequest(
                     $data->getMessages(),
@@ -137,7 +152,7 @@ class UserController extends Controller
 
                 if (empty($data->getMessages())) {
                     return $this->response->successCreated(
-                        $data->toSafeArray(['password', 'photo_base64'])
+                        $data->toSafeArray(['password', 'photo_base64', 'photo'])
                     );
                 }
             }
@@ -219,7 +234,7 @@ class UserController extends Controller
 
                 if (empty($data->getMessages())) {
                     return $this->response->success(
-                        $data->toSafeArray(['password', 'photo_base64'])
+                        $data->toSafeArray(['password', 'photo_base64', 'photo'])
                     );
                 } else {
                     return $this->response->badRequest(
@@ -231,7 +246,7 @@ class UserController extends Controller
             }
 
             return $this->response->accepted([
-                $data->toSafeArray(['password', 'photo_base64']),
+                $data->toSafeArray(['password', 'photo_base64', 'photo']),
                 $this->request->getPut(),
             ]);
         } catch (Exception $e) {
@@ -281,7 +296,7 @@ class UserController extends Controller
             }
 
             return $this->response->success(
-                $data->toSafeArray(['password', 'photo_base64'])
+                $data->toSafeArray(['password', 'photo_base64', 'photo'])
             );
         } catch (Exception $e) {
             return $this->response->badRequest(

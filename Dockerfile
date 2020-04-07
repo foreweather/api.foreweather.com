@@ -86,5 +86,7 @@ ENV OAUTH_REFRESH_TOKEN_LIFETIME            2419200
 ENV OAUTH_ALWAYS_ISSUE_NEW_REFRESH_TOKEN    true
 ENV OAUTH_UNSET_REFRESH_TOKEN_AFTER_USE     false
 
-
-
+#######################################################################################################################
+# APIDOC
+#######################################################################################################################
+RUN apk --update add nodejs npm && cd /www && apidoc -i application/service -o public/documentation
