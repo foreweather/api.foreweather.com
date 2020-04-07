@@ -8,7 +8,6 @@ services:
     image: zekiunal/foreweather-api
     ports:
       - "8888:80"
-      - "4422:22"
     links:
       - mysql
     environment:
@@ -16,6 +15,22 @@ services:
       DB_USERNAME: 'root'
       DB_PASSWORD: 'Fore@123'
       DB_NAME: 'foreweather'
+  publisher:
+    image: zekiunal/foreweather-publisher
+    links:
+      - api
+      - beanstalk
+    restart: always
+    environment:
+      QUEUE_HOST: 'beanstalk'
+      OAUTH_CLIENT_ID: 'notify'
+      OAUTH_CLIENT_SECRET: 'teknasyon'
+      OAUTH_TOKEN_URL: 'http://api/oauth2/token'
+      OAUTH_CLIENT_REDIRECT_URL: ''
+      OAUTH_CLIENT_AUTHORIZE_URL: 'http://api/oauth2/authorize'
+      OAUTH_OWNER_DETAILS: 'http://api/oauth2/me'
+      API_BASE_URL: 'http://api'
+      NOTIFY_HOUR: '09:00'
   mysql:
     image: mysql:5.6
     ports:
@@ -24,3 +39,6 @@ services:
     environment:
       MYSQL_DATABASE: 'foreweather'
       MYSQL_ROOT_PASSWORD: 'Fore@123'
+  beanstalk:
+    image: uretgec/beanstalkd-alpine:latest
+    restart: always
