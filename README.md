@@ -24,6 +24,9 @@ docker stack deploy --compose-file docker-compose.yml foreweather
 
 ```
 
+### Veritabanı
+
+Çalıştırmanız gereken sql betiği [adresine](https://raw.githubusercontent.com/foreweather/api.foreweather.com/master/docker/database.sql) yüklenmiştir.
 
 ## Kullanım
 
