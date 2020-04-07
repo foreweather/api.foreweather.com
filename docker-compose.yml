@@ -27,7 +27,7 @@ services:
       OAUTH_CLIENT_AUTHORIZE_URL: 'http://api/oauth2/authorize'
       OAUTH_OWNER_DETAILS: 'http://api/oauth2/me'
       API_BASE_URL: 'http://api'
-      NOTIFY_HOUR: '09:00'
+      NOTIFY_HOUR: '07:46'
   notify:
     image: zekiunal/foreweather-notify
     links:
@@ -43,7 +43,6 @@ services:
       OAUTH_CLIENT_AUTHORIZE_URL: 'http://api/oauth2/authorize'
       OAUTH_OWNER_DETAILS: 'http://api/oauth2/me'
       API_BASE_URL: 'http://api'
-      NOTIFY_HOUR: '09:00'
   mysql:
     image: mysql:5.6
     ports:
