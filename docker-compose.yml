@@ -31,6 +31,22 @@ services:
       OAUTH_OWNER_DETAILS: 'http://api/oauth2/me'
       API_BASE_URL: 'http://api'
       NOTIFY_HOUR: '09:00'
+  notify:
+    image: zekiunal/foreweather-notify
+    links:
+      - api
+      - beanstalk
+    restart: always
+    environment:
+      QUEUE_HOST: 'beanstalk'
+      OAUTH_CLIENT_ID: 'notify'
+      OAUTH_CLIENT_SECRET: 'teknasyon'
+      OAUTH_TOKEN_URL: 'http://api/oauth2/token'
+      OAUTH_CLIENT_REDIRECT_URL: ''
+      OAUTH_CLIENT_AUTHORIZE_URL: 'http://api/oauth2/authorize'
+      OAUTH_OWNER_DETAILS: 'http://api/oauth2/me'
+      API_BASE_URL: 'http://api'
+      NOTIFY_HOUR: '09:00'
   mysql:
     image: mysql:5.6
     ports:
@@ -42,3 +58,15 @@ services:
   beanstalk:
     image: uretgec/beanstalkd-alpine:latest
     restart: always
+  bconsole:
+    image: ohmcoe/beanstalk_console:latest
+    restart: always
+    ports:
+      - "8044:80"
+    environment:
+      APACHE_PORT: '80'
+      BEANSTALKD_HOST: 'beanstalk'
+      BEANSTALKD_PORT: '11300'
+
+
+
