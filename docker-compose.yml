@@ -63,6 +63,3 @@ services:
       APACHE_PORT: '80'
       BEANSTALKD_HOST: 'beanstalk'
       BEANSTALKD_PORT: '11300'
-
-
-
