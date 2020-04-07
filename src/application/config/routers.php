@@ -469,12 +469,12 @@ return [
          * @apiName  token
          * @apiGroup OAuth
          *
-         * @apiParam {String} client_id user email
-         * @apiParam {String} client_secret user password
-         * @apiParam {String} username user phone
-         * @apiParam {String} password user service city list collection
-         * @apiParam {String} grant_type user timezone
-         * @apiParam {String} [scope] user timezone
+         * @apiParam {String} client_id OAuth client id
+         * @apiParam {String} client_secret OAuth client secret
+         * @apiParam {String} username User email
+         * @apiParam {String} password User password
+         * @apiParam {String} grant_type OAuth request grand type
+         * @apiParam {String} [scope] Authorization scope request
          *
          * @apiSuccess {String} access_token
          * @apiSuccess {String} expires_in
