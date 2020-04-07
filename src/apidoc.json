@@ -1,0 +1,16 @@
+{
+  "name": "Foreweather API",
+  "version": "1.0.0",
+  "title": "Foreweather API",
+  "url": "http://localhost:8888",
+  "template": {
+    "withCompare": false,
+    "withGenerator": true
+  },
+  "order": [
+    "Foreweather",
+    "OAuth",
+    "Coupon",
+    "User"
+  ]
+}
