@@ -17,9 +17,17 @@ Foreweather'un geliştirme sürümünü başlatmanın hızlı bir yolu github re
 Docker swarm ile ölçeklenebilir bir altyapı kullanabilirsiniz.
 
 ```bash
-$  docker swarm init
 
-$  docker-compose build api && docker-compose push
+docker swarm init
 
-$  docker stack deploy --compose-file docker-compose.yml foreweather
+docker stack deploy --compose-file docker-compose.yml foreweather
+
 ```
+
+
+# Kullanım
+
+Postman import dosyasını proje anadizininde bulabilirsiniz. 
+
+[Postman Import File](ForeweatherProject.postman_collection.json)
+

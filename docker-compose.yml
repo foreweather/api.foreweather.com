@@ -2,9 +2,6 @@ version: '3'
 
 services:
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: zekiunal/foreweather-api
     ports:
       - "8888:80"
