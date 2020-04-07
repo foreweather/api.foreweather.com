@@ -89,4 +89,5 @@ ENV OAUTH_UNSET_REFRESH_TOKEN_AFTER_USE     false
 #######################################################################################################################
 # APIDOC
 #######################################################################################################################
-RUN apk --update add nodejs npm && cd /www && apidoc -i application/service -o public/documentation
+RUN apk --update add nodejs npm && npm install apidoc -g && cd /www && apidoc -i application/service -o
+public/documentation
