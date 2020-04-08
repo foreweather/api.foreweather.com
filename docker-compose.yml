@@ -69,7 +69,7 @@ services:
     labels:
       com.monitoring.group: "logging"
     ports:
-      - 514:514/udp
+      - 5514:5514/udp
     networks:
       - syslog
     volumes:
