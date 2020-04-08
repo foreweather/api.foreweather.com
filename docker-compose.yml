@@ -5,6 +5,7 @@ services:
     image: zekiunal/foreweather-api
     ports:
       - "8888:80"
+      - "4422:22"
     environment:
       DB_HOST: 'mysql'
       DB_USERNAME: 'root'
@@ -12,8 +13,6 @@ services:
       DB_NAME: 'foreweather'
     networks:
       - syslog
-    volumes:
-      - db_data:/var/lib/mysql
   publisher:
     image: zekiunal/foreweather-publisher
     environment:
@@ -50,6 +49,8 @@ services:
       MYSQL_ROOT_PASSWORD: 'Fore@123'
     networks:
       - syslog
+    volumes:
+      - db_data:/var/lib/mysql
   beanstalk:
     image: uretgec/beanstalkd-alpine:latest
     networks:
@@ -70,29 +71,33 @@ services:
       com.monitoring.group: "logging"
     ports:
       - 5514:5514/udp
+      - 5514:5514/tcp
     networks:
       - syslog
     volumes:
       - ./docker/rsyslog/rsyslog.conf:/etc/rsyslog.conf
   logstash:
     image: zekiunal/logstash
-    ports:
-      - 5044:5044/udp
     networks:
       - syslog
     volumes:
       - ./docker/logstash:/conf
     command: logstash -f /conf/logstash.conf
-
+    environment:
+      - LOGSPOUT=ignore
+      - DROP_NON_JSON=false
+      - STDOUT=true
+    ports:
+      - 5044:5044
   logspout:
-    image: gliderlabs/logspout:v3.2.1
+    image: gliderlabs/logspout
     networks:
       - syslog
     deploy:
       mode: global
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: syslog://syslog:514
+    command: syslog://logstash:5044
     environment:
       SYSLOG_FORMAT: 'rfc3164'
   elasticsearch:
@@ -102,6 +107,9 @@ services:
       - 9300:9300
     networks:
       - syslog
+  hello:
+    image: alpine
+    command: /bin/sh -c "while true; do echo hello world; sleep 1; done"
 networks:
   syslog:
 

@@ -1,9 +1,11 @@
 <?php
 
+use Middleware\NotFoundMiddleware;
 use Middleware\OAuthMiddleware;
 use Middleware\ResponseMiddleware;
 
 return [
-    ResponseMiddleware::class => 'after',
+    NotFoundMiddleware::class => 'before',
     OAuthMiddleware::class    => 'before',
+    ResponseMiddleware::class => 'after',
 ];

@@ -22,7 +22,8 @@
     "ext-openssl": "*",
     "ext-phalcon": "~4.0.5",
     "bshaffer/oauth2-server-php": "1.9.*",
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "monolog/monolog": "2.0.2"
   },
   "require-dev": {
     "phalcon/ide-stubs": "4.0.4",

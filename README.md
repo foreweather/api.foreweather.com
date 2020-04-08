@@ -42,6 +42,16 @@ Api dökümantasyonu docker yapılandırması sırasında otomatik olarak üreti
 http://localhost:8888/documentation/index.html
 ```
 
+## Log Yönetimi
+
+ * Centralized log aggregation: ELK
+
+### 
+
+Uygulama yapılandırması dağıtık olduğu için merkezi log yönetimi kurulmuştur.
+
+Syslog ile toplanan loglar, logstash üzerinden filtrelenip Elasticsearch'te depolanır. 
+
 ## Lisans
 
 Foreweather [MIT license](https://opensource.org/licenses/MIT). lisansı kapsamında kullanım ve geliştirmeye açıktır.
