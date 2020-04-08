@@ -28,20 +28,6 @@ docker stack deploy --compose-file docker-compose.yml foreweather
 
 Çalıştırmanız gereken sql betiği [adresine](https://raw.githubusercontent.com/foreweather/api.foreweather.com/master/docker/database.sql) yüklenmiştir.
 
-## Kullanım
-
-Postman import dosyasını proje ana dizininde bulabilirsiniz. 
-
-[Postman Import File](https://raw.githubusercontent.com/foreweather/api.foreweather.com/master/ForeweatherProject.postman_collection.json)
-
-### API Referansı
-
-Api dökümantasyonu docker yapılandırması sırasında otomatik olarak üretilir. Projeyi ayaklandırdıktan sonra aşağıdaki adresten API referans kaynağına ulaşabilirsiniz.
-
-```
-http://localhost:8888/documentation/index.html
-```
-
 ## Log Yönetimi
 
  * Centralized log aggregation: ELK
@@ -51,6 +37,39 @@ http://localhost:8888/documentation/index.html
 Uygulama yapılandırması dağıtık olduğu için merkezi log yönetimi kurulmuştur.
 
 Syslog ile toplanan loglar, logstash üzerinden filtrelenip Elasticsearch'te depolanır. 
+
+## Uygulama Bileşenleri
+
+Forewether yazılım geliştirme mimarisinin bileşenleri aşağıda listelenmiştir.
+
+### Foreweather Api
+
+Foreweather uygulamasının hizmetlerini sağlayan son kullanıcya yönelik restFul API servisi.
+
+#### Kullanım
+
+##### API Referansı
+
+Api dökümantasyonu docker yapılandırması sırasında otomatik olarak üretilir. Projeyi ayaklandırdıktan sonra aşağıdaki adresten API referans kaynağına ulaşabilirsiniz.
+
+```
+http://localhost:8888/documentation/index.html
+```
+
+##### Postman Desteği
+
+Postman import dosyasını proje ana dizininde bulabilirsiniz. 
+
+[Postman Import File](https://raw.githubusercontent.com/foreweather/api.foreweather.com/master/ForeweatherProject.postman_collection.json)
+
+#### [Foreweather Publisher](https://github.com/foreweather/publisher)
+
+Foreweather Publisher; Abonelerine günlük hava durumu bilgilerini kullanıcının kayıtlı zaman dilimine göre gruplayıp 
+yayın yapan servisidir.
+
+#### [Foreweather Notify](https://github.com/foreweather/notify)
+
+Foreweather Notify; Foreweather Abonelerine günlük bildirim gönderen servisidir.
 
 ## Lisans
 
