@@ -1,17 +1,20 @@
 <?php
+declare(strict_types=1);
 
 namespace Middleware;
 
 use Foreweather\Phalcon\Http\Response;
+use Phalcon\Di\Injectable;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Micro\MiddlewareInterface;
 
 /**
- * Class ResponseMiddleware
+ * Class NotFoundMiddleware
  *
+ * @property Micro    $application
  * @property Response $response
  */
-class ResponseMiddleware implements MiddlewareInterface
+class NotFoundMiddleware extends Injectable implements MiddlewareInterface
 {
     /**
      * Halt execution after setting the message in the response
@@ -33,6 +36,19 @@ class ResponseMiddleware implements MiddlewareInterface
     }
 
     /**
+     * Checks if the resource was found
+     */
+    public function beforeNotFound()
+    {
+        $this->halt(
+            $this->application,
+            $this->response->getHttpCodeDescription($this->response::NOT_FOUND)
+        );
+
+        return false;
+    }
+
+    /**
      * Call me
      *
      * @param Micro $api
@@ -41,12 +57,6 @@ class ResponseMiddleware implements MiddlewareInterface
      */
     public function call(Micro $api)
     {
-        /**
-         * @var Response $response
-         */
-        $response = $api->getService('response');
-        $response->send();
-
         return true;
     }
 }

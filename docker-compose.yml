@@ -5,6 +5,7 @@ services:
     image: zekiunal/foreweather-api
     ports:
       - "8888:80"
+      - "4422:22"
     environment:
       DB_HOST: 'mysql'
       DB_USERNAME: 'root'
