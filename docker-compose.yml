@@ -13,8 +13,6 @@ services:
       DB_NAME: 'foreweather'
     networks:
       - syslog
-    volumes:
-      - db_data:/var/lib/mysql
   publisher:
     image: zekiunal/foreweather-publisher
     environment:
@@ -51,6 +49,8 @@ services:
       MYSQL_ROOT_PASSWORD: 'Fore@123'
     networks:
       - syslog
+    volumes:
+      - db_data:/var/lib/mysql
   beanstalk:
     image: uretgec/beanstalkd-alpine:latest
     networks:
