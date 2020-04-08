@@ -1,12 +1,10 @@
-version: '3'
+version: '3.4'
 
 services:
   api:
     image: zekiunal/foreweather-api
     ports:
       - "8888:80"
-    links:
-      - mysql
     environment:
       DB_HOST: 'mysql'
       DB_USERNAME: 'root'
@@ -14,10 +12,6 @@ services:
       DB_NAME: 'foreweather'
   publisher:
     image: zekiunal/foreweather-publisher
-    links:
-      - api
-      - beanstalk
-    restart: always
     environment:
       QUEUE_HOST: 'beanstalk'
       OAUTH_CLIENT_ID: 'notify'
@@ -27,13 +21,9 @@ services:
       OAUTH_CLIENT_AUTHORIZE_URL: 'http://api/oauth2/authorize'
       OAUTH_OWNER_DETAILS: 'http://api/oauth2/me'
       API_BASE_URL: 'http://api'
-      NOTIFY_HOUR: '07:46'
+      NOTIFY_HOUR: '19:10'
   notify:
     image: zekiunal/foreweather-notify
-    links:
-      - api
-      - beanstalk
-    restart: always
     environment:
       QUEUE_HOST: 'beanstalk'
       OAUTH_CLIENT_ID: 'notify'
@@ -43,23 +33,98 @@ services:
       OAUTH_CLIENT_AUTHORIZE_URL: 'http://api/oauth2/authorize'
       OAUTH_OWNER_DETAILS: 'http://api/oauth2/me'
       API_BASE_URL: 'http://api'
+
   mysql:
     image: mysql:5.6
     ports:
       - "3306:3306"
-    restart: always
     environment:
       MYSQL_DATABASE: 'foreweather'
       MYSQL_ROOT_PASSWORD: 'Fore@123'
+
   beanstalk:
     image: uretgec/beanstalkd-alpine:latest
-    restart: always
+
   bconsole:
     image: ohmcoe/beanstalk_console:latest
-    restart: always
     ports:
       - "8044:80"
     environment:
       APACHE_PORT: '80'
       BEANSTALKD_HOST: 'beanstalk'
       BEANSTALKD_PORT: '11300'
+
+  syslog:
+    image: zekiunal/syslog
+    labels:
+      com.monitoring.group: "logging"
+    ports:
+      - 5514:5514/udp
+      - 5514:5514/tcp
+  logstash:
+    image: zekiunal/logstash
+    labels:
+      com.monitoring.group: "logging"
+    environment:
+      LOGSPOUT: 'ignore'
+    ports:
+      - 51415:51415/udp
+      - 51415:51415/tcp
+    volumes:
+      - ./docker/logstash:/conf
+    command: logstash -f /conf/logstash.conf
+    networks:
+      - syslog
+
+  logspout:
+    image: gliderlabs/logspout:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command:
+      syslog://logstash:51415
+    deploy:
+      mode: global
+      resources:
+        limits:
+          cpus: '0.20'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
+    labels:
+      com.monitoring.group: "logging"
+    networks:
+      - syslog
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:2.4
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 256M
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+      - path.repo=/tmp/es-repo
+      - LOGSPOUT:ignore
+    healthcheck:
+      start_period: 15s
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 10s
+      timeout: 2s
+      retries: 5
+    networks:
+      - syslog
+
+  hello:
+    image: alpine
+    command: /bin/sh -c "while true; do echo hello world; sleep 1; done"
+    networks:
+      - syslog
+
+networks:
+  syslog:
