@@ -12,6 +12,8 @@ services:
       DB_NAME: 'foreweather'
     networks:
       - syslog
+    volumes:
+      - ./tmp:/var/lib/mysql
   publisher:
     image: zekiunal/foreweather-publisher
     environment:
@@ -67,9 +69,40 @@ services:
     labels:
       com.monitoring.group: "logging"
     ports:
-      - 5514:5514/udp
-      - 5514:5514/tcp
+      - 5514:514/udp
+      - 5514:514/tcp
+    networks:
+      - syslog
+    volumes:
+      - ./docker/rsyslog/rsyslog.conf:/etc/rsyslog.conf
+  logstash:
+    image: zekiunal/logstash
+    ports:
+      - 5555:514
+    networks:
+      - syslog
+    volumes:
+      - ./docker/logstash:/conf
+    command: logstash -f /conf/logstash.conf
+  logspout:
+    image: gliderlabs/logspout
+    networks:
+      - syslog
+    deploy:
+      mode: global
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: syslog://logstash
+    environment:
+      SYSLOG_FORMAT: 'rfc3164'
+  elasticsearch:
+    image: elasticsearch:2.4
+    ports:
+      - 9200:9200
+      - 9300:9300
     networks:
       - syslog
 networks:
   syslog:
+
+

@@ -6,3 +6,4 @@ PHP_CodeSniffer
 phpcbf.phar
 phpcs.phar
 php-cs-fixer
+/data

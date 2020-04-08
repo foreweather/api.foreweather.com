@@ -8,3 +8,4 @@ phpcbf.phar
 phpcs.phar
 PHP_CodeSniffer
 .php_cs.cache
+/data
