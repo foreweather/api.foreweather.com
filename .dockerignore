@@ -7,3 +7,4 @@ phpcbf.phar
 phpcs.phar
 php-cs-fixer
 /data
+/logs

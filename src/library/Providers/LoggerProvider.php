@@ -54,7 +54,8 @@ class LoggerProvider implements ServiceProviderInterface
                 $handler->setFormatter($formatter);
 
                 $file           = 'notify';
-                $path           = './var/logs';
+                $path           = '/tmp';
+                @mkdir($path, 0777, true);
                 $logFile        = $path . '/' . $file . '.log';
                 $formatter      = new LineFormatter("[%datetime%][%level_name%] %message%\n");
                 $stream_handler = new StreamHandler($logFile, Logger::DEBUG);
