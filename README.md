@@ -103,8 +103,8 @@ Foreweather Notify; Foreweather Abonelerine günlük bildirim gönderen servis
 ### Bonus
 
 - [x] Git commit mesajları
-- [ ] Kod içi yorumlar ve yönergeler
-- [x] Restful API best practices yönergeleri
+- [x] Kod içi yorumlar ve yönergeler
+- [ ] Restful API best practices yönergeleri
 - [x] Loglama ve hata yakalama
 - [ ] Unit ve davranışsal testlerin yazılması
 - [ ] Rest API version desteği

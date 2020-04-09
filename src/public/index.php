@@ -5,14 +5,19 @@ include_once 'autoload.php';
 
 use Foreweather\Phalcon\Mvc\Micro\Api;
 
+/**
+ * Define application environment
+ */
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ?
     getenv('APPLICATION_ENV') : 'development'));
 
-$providers = require_once '../application/config/providers.php';
-
 try {
     $api = new Api();
-    $api->setup($providers);
+    $api->setup(require_once '../application/config/providers.php');
+
+    /**
+     * Run application
+     */
     $api->run();
 } catch (Exception $e) {
     echo $e->getMessage();
