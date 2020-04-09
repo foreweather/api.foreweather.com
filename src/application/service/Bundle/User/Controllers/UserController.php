@@ -56,7 +56,7 @@ class UserController extends Controller
                 return $this->response->notFound(
                     'User not exist or you dont have permission',
                     'API-REQ404',
-                    'https://documantation.api.foreweather.com/user#notFound'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
 
@@ -86,7 +86,7 @@ class UserController extends Controller
                 return $this->response->notFound(
                     'User not exist or you dont have permission',
                     'API-REQ404',
-                    'https://documantation.api.foreweather.com/user#notFound'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
 
@@ -117,7 +117,7 @@ class UserController extends Controller
                 return $this->response->badRequest(
                     $data->getMessages(),
                     null,
-                    'https://documantation.api.foreweather.com/user#update_example'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
         } catch (Exception $e) {
@@ -160,13 +160,13 @@ class UserController extends Controller
             return $this->response->badRequest(
                 $data->getMessages(),
                 null,
-                'https://documantation.api.foreweather.com/user#create_example'
+                baseUrl() . '/documentation/#api-Users'
             );
         } catch (Exception $e) {
             return $this->response->badRequest(
                 $e->getMessage(),
                 null,
-                'https://documantation.api.foreweather.com/user#create'
+                baseUrl() . '/documentation/#api-Users'
             );
         }
     }
@@ -183,7 +183,7 @@ class UserController extends Controller
                 return $this->response->notFound(
                     'User not exist or you dont have permission',
                     'API-REQ404',
-                    'https://documantation.api.foreweather.com/user#notFound'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
 
@@ -240,7 +240,7 @@ class UserController extends Controller
                     return $this->response->badRequest(
                         $data->getMessages(),
                         null,
-                        'https://documantation.api.foreweather.com/user#update_example'
+                        baseUrl() . '/documentation/#api-Users'
                     );
                 }
             }
@@ -266,7 +266,7 @@ class UserController extends Controller
                 return $this->response->notFound(
                     'User not exist or you dont have permission',
                     'API-REQ404',
-                    'https://documantation.api.foreweather.com/user#notFound'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
 
@@ -277,7 +277,7 @@ class UserController extends Controller
             return $this->response->badRequest(
                 null,
                 null,
-                'https://documantation.api.foreweather.com/user#delete'
+                baseUrl() . '/documentation/#api-Users'
             );
         }
     }
@@ -291,7 +291,7 @@ class UserController extends Controller
                 return $this->response->notFound(
                     'User not exist or you dont have permission',
                     'API-REQ404',
-                    'https://documantation.api.foreweather.com/user#notFound'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
 
@@ -302,7 +302,7 @@ class UserController extends Controller
             return $this->response->badRequest(
                 null,
                 null,
-                'https://documantation.api.foreweather.com/user'
+                baseUrl() . '/documentation/#api-Users'
             );
         }
     }
@@ -347,7 +347,7 @@ class UserController extends Controller
             return $this->response->badRequest(
                 $e->getMessage(),
                 null,
-                'https://documantation.api.foreweather.com/pagination'
+                baseUrl() . '/documentation/#api-Users'
             );
         } catch (Exception $e) {
             return $this->response->badRequest($e->getMessage());
@@ -453,7 +453,7 @@ class UserController extends Controller
             return $this->response->notFound(
                 'User not exist or you dont have permission',
                 'API-REQ404',
-                'https://documantation.api.foreweather.com/user#notFound'
+                baseUrl() . '/documentation/#api-Users'
             );
         }
 
@@ -480,7 +480,7 @@ class UserController extends Controller
                 return $this->response->notFound(
                     'User not exist or you dont have permission',
                     'API-REQ404',
-                    'https://documantation.api.foreweather.com/user#notFound'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
 
@@ -489,7 +489,7 @@ class UserController extends Controller
                 return $this->response->badRequest(
                     'Subscriber coupon is not valid',
                     'API-REQ615',
-                    'https://documantation.api.foreweather.com/user#activate'
+                    baseUrl() . '/documentation/#api-Users'
                 );
             }
 
@@ -499,7 +499,7 @@ class UserController extends Controller
         } catch (Exception $e) {
             return $this->response->badRequest(
                 $e->getMessage(),
-                'https://documantation.api.foreweather.com/user#activate'
+                baseUrl() . '/documentation/#api-Users'
             );
         }
     }

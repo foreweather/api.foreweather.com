@@ -28,7 +28,7 @@ class CouponController extends Controller
                 return $this->response->notFound(
                     'Coupon not exist or you dont have permission',
                     'API-REQ404',
-                    'https://documantation.api.foreweather.com/coupon#notFound'
+                    baseUrl() . '/documentation/#api-Coupons'
                 );
             }
 
@@ -58,7 +58,7 @@ class CouponController extends Controller
                     return $this->response->badRequest(
                         $data->getMessages(),
                         null,
-                        'https://documantation.api.foreweather.com/coupon#update_example'
+                        baseUrl() . '/documentation/#api-Coupons'
                     );
                 }
             }
@@ -109,7 +109,7 @@ class CouponController extends Controller
             $this->response->badRequest(
                 $e->getMessage(),
                 null,
-                'https://documantation.api.foreweather.com/pagination'
+                baseUrl() . '/documentation/#api-Coupons'
             );
         } catch (Exception $e) {
             $this->response->badRequest($e->getMessage());

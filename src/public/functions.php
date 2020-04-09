@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
 
+function baseUrl()
+{
+    return isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://'.
+        $_SERVER['HTTP_HOST'];
+}
+
 /**
  * @param string|null $path
  * @param integer     $count

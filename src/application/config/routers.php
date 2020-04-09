@@ -379,7 +379,7 @@ return [
          * @apiErrorExample {json} Error-Response:
          * HTTP/1.1 400 BAD REQUEST
          * {
-         *      "code": "https://documantation.api.foreweather.com/user#activate",
+         *      "code": "http://localhost:8888/documentation/",
          *      "message": "Bad Request",
          *      "detail": "Subscriber coupon is not valid"
          * }
