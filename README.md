@@ -71,6 +71,43 @@ yayın yapan servisidir.
 
 Foreweather Notify; Foreweather Abonelerine günlük bildirim gönderen servisidir.
 
+## Kontrol Listesi
+
+### Restful API
+
+- [x] Kullanıcı kaydı
+- [x] OAuth2 desteği
+    - [x]  Request Headers
+- [x] Kupon kodu ile aktivasyon
+- [x] Kullanıcı bilgilerinin güncellenmesi
+    - [x] Kullanıcı fotoğrafı
+- [x] Kullanıcıların belirli şehirlere olan aboneliklerinin yönetilmesi
+
+- [ ] PHP 7.2 desteği
+    - [x] PHP 7.3
+- [x] Github platformu versiyon kotrol desteği
+- [x] Restful Api istek ve cevaplarının standardizasyonu
+- [x] Veritabanı tasarımı ve yönergelerin hazırlanması
+- [x] Nesne yönelimli programlama 
+- [x] API hata ve uyarılarının tanımlanması ve standartizasyonu
+- [x] Hata yakalama ve uyarı desteği
+- [x] PSR2 kodlama standartlarının kullanılması 
+- [x] Composer desteği
+- [x] Genel bilgilendirme dökümantasyonu
+- [x] Docker Compose desteği 
+- [x] Veritabanı şemasının paylaşılması
+- [x] API dökümanstasyonu
+
+### Bonus
+
+- [x] Git commit mesajları
+- [ ] Kod içi yorumlar ve yönergeler
+- [x] Restful API best practices yönergeleri
+- [x] Loglama ve hata yakalama
+- [ ] Unit ve davranışsal testlerin yazılması
+- [ ] Rest API version desteği
+- [x] Phalcon Framewok kullanımı
+
 ## Lisans
 
 Foreweather [MIT license](https://opensource.org/licenses/MIT). lisansı kapsamında kullanım ve geliştirmeye açıktır.
