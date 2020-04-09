@@ -83,6 +83,8 @@ Foreweather Notify; Foreweather Abonelerine günlük bildirim gönderen servis
     - [x] Kullanıcı fotoğrafı
 - [x] Kullanıcıların belirli şehirlere olan aboneliklerinin yönetilmesi
 
+### Beklentiler
+
 - [ ] PHP 7.2 desteği
     - [x] PHP 7.3
 - [x] Github platformu versiyon kotrol desteği
